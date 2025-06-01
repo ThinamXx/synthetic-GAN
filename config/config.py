@@ -3,7 +3,7 @@ Configuration file for the Synthetic Data Generation.
 """
 
 # Data configuration.
-DATA_PATH = "data/flat-training.csv"
+DATA_PATH = "data/raw/flat-training.csv"
 OUTPUT_PATH = "synthetic_data.csv"
 SAMPLE_SIZE = 100000  # Number of synthetic samples to generate.
 

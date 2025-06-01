@@ -8,6 +8,7 @@ Privacy-preserving synthetic data generation using ensemble CTGAN.
 import pandas as pd
 import numpy as np
 import os
+import sys
 import time
 import argparse
 from pathlib import Path
@@ -15,10 +16,12 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 # Import our custom modules.
-from config import *
-from data_preprocessor import DataPreprocessor
-from privacy_ctgan import EnsembleCTGAN
+from config.config import *
+from synthetic_gan.data.data_preprocessor import DataPreprocessor
+from synthetic_gan.models.privacy_ctgan import EnsembleCTGAN
 
 
 def load_data(filepath):

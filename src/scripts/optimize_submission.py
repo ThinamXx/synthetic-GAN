@@ -8,7 +8,20 @@ import pandas as pd
 import numpy as np
 import gzip
 import os
+import sys
+import time
 from pathlib import Path
+import argparse
+import warnings
+
+warnings.filterwarnings("ignore")
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Import our custom modules.
+from config.config import *
+from synthetic_gan.data.data_preprocessor import DataPreprocessor
+from synthetic_gan.models.privacy_ctgan import EnsembleCTGAN
 
 
 def optimize_csv_for_submission(input_file, output_file, max_size_mb=50):

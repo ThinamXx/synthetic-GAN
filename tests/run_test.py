@@ -11,10 +11,12 @@ import time
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
 # Import our modules.
-from config import *
-from data_preprocessor import DataPreprocessor
-from privacy_ctgan import EnsembleCTGAN
+from config.config import *
+from synthetic_gan.data.data_preprocessor import DataPreprocessor
+from synthetic_gan.models.privacy_ctgan import EnsembleCTGAN
 
 
 def run_quick_test():

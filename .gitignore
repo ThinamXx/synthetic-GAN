@@ -193,7 +193,7 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
-data/
+data/*
 outputs/
 synthetic_env/
 test_outputs/

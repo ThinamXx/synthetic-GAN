@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  synthetic-gan:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./outputs:/app/outputs
+      - ./config:/app/config
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: python src/scripts/main.py
+
+  notebook:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+  dev:
+    build: .
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: bash
+    stdin_open: true
+    tty: true 
